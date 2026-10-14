@@ -1,0 +1,112 @@
+@import url("https://use.typekit.net/fsc1wsd.css");
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'PrintedMoments';
+  src: url('https://static1.squarespace.com/static/670423e106da6c036366fd10/t/67042f1ac94bbb494649b8e4/1728327450432/printedmoments-webfont.woff') format('woff');
+  font-display: swap;
+  font-style: normal;
+  font-weight: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+:root,
+body {
+  --sqs-site-gutter: 5vw;
+  --sqs-mobile-site-gutter: 6vw;
+  --sqs-site-max-width: 1500px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a, button {
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@theme {
+  /* Conejo Valley Design Tokens */
+  --color-brand-bg: #FBF9F4;          /* Exact original warm bone ivory background */
+  --color-brand-surface: #F3F1EC;     /* Warm sand surface card background */
+  --color-brand-dark: #2F3E37;        /* Deep forest slate for dark accents */
+  --color-brand-heading: #2B2B2B;     /* Charcoal for serif headings */
+  --color-brand-body: #333333;        /* Muted body text */
+  --color-brand-primary: #3C4D44;     /* Deep earthy sage green */
+  --color-brand-teal: #7CA19F;        /* Script accent teal */
+  --color-brand-accent: #C47C5D;      /* Terracotta accent for buttons */
+  --color-brand-border: #E5E1D8;      /* Delicate beige border */
+
+  /* Fonts */
+  --font-serif: "beaufort-pro", var(--font-heading), "Georgia", serif;
+  --font-sans: var(--font-body), "Mulish", "Inter", sans-serif;
+  --font-script: "PrintedMoments", cursive;
+}
+
+h1, h2, h3, h4 {
+  font-family: "beaufort-pro", var(--font-heading), serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.font-script {
+  font-family: "PrintedMoments", cursive;
+}
+
+.font-heading {
+  font-family: "beaufort-pro", Georgia, serif !important;
+  font-weight: 300;
+}
+
+.font-body {
+  font-family: var(--font-body), "Mulish", sans-serif;
+}
+
+/* Primary Button Animated Underline */
+.btn-underline,
+.sqs-btn-underline {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 9px 0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 12.4px;
+  font-weight: 400;
+  color: #2b2b2b;
+  text-decoration: none;
+}
+
+.btn-underline::before,
+.sqs-btn-underline::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 6px;
+  left: 0;
+  border-bottom: 1px solid #2b2b2b;
+  transition: right 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-underline:hover::before,
+.sqs-btn-underline:hover::before {
+  right: 100%;
+}
+
+/* Fluid image overlay and subtle editorial film tone */
+.fluidImageOverlay,
+.media-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fluid-engine img,
+.media-wrapper img {
+  filter: contrast(0.97) saturate(0.96);
+}

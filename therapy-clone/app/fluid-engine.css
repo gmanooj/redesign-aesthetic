@@ -1,0 +1,989 @@
+/* ==============================================================
+   Fluid Engine Design System - Responsive Grid Architecture
+   Emulates a 24-column desktop / 8-column mobile proportional grid
+   ============================================================== */
+
+/* Section 1: Hero Grid */
+.fluid-grid-hero {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 11px);
+  --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (8 - 1))) / 8);
+
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(24, minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11px;
+  column-gap: 11px;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .fluid-grid-hero {
+    --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 11px);
+    --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (24 - 1))) / 24);
+    --inset-padding: 0vw;
+    --row-height-scaling-factor: 0.0215;
+    --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding)));
+
+    grid-template-rows: repeat(18, minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+    grid-template-columns:
+      minmax(var(--grid-gutter), 1fr)
+      repeat(24, minmax(0, var(--cell-max-width)))
+      minmax(var(--grid-gutter), 1fr);
+    row-gap: 11px;
+    column-gap: 11px;
+  }
+}
+
+.hero-tagline-block {
+  grid-area: 2/2/5/10;
+  z-index: 4;
+}
+@media (min-width: 768px) {
+  .hero-tagline-block {
+    grid-area: 2/12/4/20;
+    z-index: 7;
+  }
+}
+
+.hero-headline-block {
+  grid-area: 5/2/12/10;
+  z-index: 3;
+}
+@media (min-width: 768px) {
+  .hero-headline-block {
+    grid-area: 7/12/15/24;
+    z-index: 6;
+  }
+}
+
+.hero-cta-block {
+  grid-area: 12/2/14/10;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .hero-cta-block {
+    grid-area: 15/12/17/24;
+    z-index: 2;
+  }
+}
+
+.hero-media-left {
+  grid-area: 15/1/24/8;
+  z-index: 5;
+}
+@media (min-width: 768px) {
+  .hero-media-left {
+    grid-area: 2/1/17/10;
+    z-index: 5;
+  }
+}
+
+.hero-media-right {
+  grid-area: 18/9/24/11;
+  z-index: 2;
+}
+@media (min-width: 768px) {
+  .hero-media-right {
+    grid-area: 7/25/17/27;
+    z-index: 4;
+  }
+}
+
+/* ==============================================================
+   Section 2: Hope / Narrative Philosophy Grid
+   ============================================================== */
+.fluid-grid-sec2 {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 20px);
+  --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (20px * (8 - 1))) / 8);
+
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(28, minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11px;
+  column-gap: 20px;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .fluid-grid-sec2 {
+    --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 20px);
+    --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (20px * (24 - 1))) / 24);
+    --inset-padding: 0vw;
+    --row-height-scaling-factor: 0.0215;
+    --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding)));
+
+    grid-template-rows: repeat(17, minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+    grid-template-columns:
+      minmax(var(--grid-gutter), 1fr)
+      repeat(24, minmax(0, var(--cell-max-width)))
+      minmax(var(--grid-gutter), 1fr);
+    row-gap: 11px;
+    column-gap: 20px;
+  }
+}
+
+.sec2-headline-block {
+  grid-area: 1/2/5/10;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .sec2-headline-block {
+    grid-area: 4/3/8/16;
+    z-index: 0;
+  }
+}
+
+.sec2-text-left-block {
+  grid-area: 5/2/13/10;
+  z-index: 2;
+}
+@media (min-width: 768px) {
+  .sec2-text-left-block {
+    grid-area: 9/3/16/10;
+    z-index: 1;
+  }
+}
+
+.sec2-text-right-block {
+  grid-area: 22/2/29/10;
+  z-index: 4;
+}
+@media (min-width: 768px) {
+  .sec2-text-right-block {
+    grid-area: 9/10/17/17;
+    z-index: 2;
+  }
+}
+
+.sec2-media-block {
+  grid-area: 14/2/21/10;
+  z-index: 3;
+}
+@media (min-width: 768px) {
+  .sec2-media-block {
+    grid-area: 1/19/17/27;
+    z-index: 3;
+  }
+}
+
+/* ==============================================================
+   Section 3: Who We Help (Card Columns)
+   ============================================================== */
+.fluid-grid-sec3 {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 20px);
+  --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (20px * (8 - 1))) / 8);
+
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(53, minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11px;
+  column-gap: 20px;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .fluid-grid-sec3 {
+    --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 20px);
+    --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (20px * (24 - 1))) / 24);
+    --inset-padding: 0vw;
+    --row-height-scaling-factor: 0.0215;
+    --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding)));
+
+    grid-template-rows: repeat(21, minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+    grid-template-columns:
+      minmax(var(--grid-gutter), 1fr)
+      repeat(24, minmax(0, var(--cell-max-width)))
+      minmax(var(--grid-gutter), 1fr);
+    row-gap: 11px;
+    column-gap: 20px;
+  }
+}
+
+.sec3-title-block {
+  grid-area: 1/2/3/10;
+  z-index: 7;
+}
+@media (min-width: 768px) {
+  .sec3-title-block {
+    grid-area: 1/2/3/10;
+    z-index: 2;
+  }
+}
+
+.sec3-adults-media {
+  grid-area: 4/2/13/10;
+  z-index: 8;
+}
+@media (min-width: 768px) {
+  .sec3-adults-media {
+    grid-area: 4/5/15/12;
+    z-index: 1;
+  }
+}
+
+.sec3-adults-text {
+  grid-area: 14/2/20/10;
+  z-index: 11;
+}
+@media (min-width: 768px) {
+  .sec3-adults-text {
+    grid-area: 16/5/21/12;
+    z-index: 5;
+  }
+}
+
+.sec3-couples-media {
+  grid-area: 21/2/30/10;
+  z-index: 9;
+}
+@media (min-width: 768px) {
+  .sec3-couples-media {
+    grid-area: 4/12/15/19;
+    z-index: 3;
+  }
+}
+
+.sec3-couples-text {
+  grid-area: 31/2/37/10;
+  z-index: 12;
+}
+@media (min-width: 768px) {
+  .sec3-couples-text {
+    grid-area: 16/12/22/19;
+    z-index: 6;
+  }
+}
+
+.sec3-children-media {
+  grid-area: 38/2/47/10;
+  z-index: 10;
+}
+@media (min-width: 768px) {
+  .sec3-children-media {
+    grid-area: 4/19/15/26;
+    z-index: 4;
+  }
+}
+
+.sec3-children-text {
+  grid-area: 48/2/54/10;
+  z-index: 13;
+}
+@media (min-width: 768px) {
+  .sec3-children-text {
+    grid-area: 16/19/22/26;
+    z-index: 7;
+  }
+}
+
+/* ==============================================================
+   Section 4: Quote Banner
+   ============================================================== */
+.fluid-grid-sec4 {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 11px);
+  --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (8 - 1))) / 8);
+
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(2, minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11px;
+  column-gap: 11px;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .fluid-grid-sec4 {
+    --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 11px);
+    --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (24 - 1))) / 24);
+    --inset-padding: 0vw;
+    --row-height-scaling-factor: 0.0215;
+    --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding)));
+
+    grid-template-rows: repeat(10, minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+    grid-template-columns:
+      minmax(var(--grid-gutter), 1fr)
+      repeat(24, minmax(0, var(--cell-max-width)))
+      minmax(var(--grid-gutter), 1fr);
+    row-gap: 11px;
+    column-gap: 11px;
+  }
+}
+
+.sec4-quote-block {
+  grid-area: 1/2/3/10;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .sec4-quote-block {
+    grid-area: 5/3/11/19;
+    z-index: 1;
+  }
+}
+
+/* ==============================================================
+   Section 5: Areas of Expertise
+   ============================================================== */
+.fluid-grid-sec5 {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 11px);
+  --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (8 - 1))) / 8);
+
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(27, minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11px;
+  column-gap: 11px;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .fluid-grid-sec5 {
+    --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 11px);
+    --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (24 - 1))) / 24);
+    --inset-padding: 0vw;
+    --row-height-scaling-factor: 0.0215;
+    --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding)));
+
+    grid-template-rows: repeat(12, minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+    grid-template-columns:
+      minmax(var(--grid-gutter), 1fr)
+      repeat(24, minmax(0, var(--cell-max-width)))
+      minmax(var(--grid-gutter), 1fr);
+    row-gap: 11px;
+    column-gap: 11px;
+  }
+}
+
+.sec5-title-block {
+  grid-area: 1/2/3/10;
+  z-index: 0;
+}
+@media (min-width: 768px) {
+  .sec5-title-block {
+    grid-area: 1/3/4/9;
+    z-index: 0;
+  }
+}
+
+/* Col 1 Items & Dividers */
+.sec5-item-1 { grid-area: 4/2/6/10; z-index: 4; }
+@media (min-width: 768px) { .sec5-item-1 { grid-area: 1/10/3/18; z-index: 4; } }
+.sec5-divider-1 { grid-area: 5/2/6/10; z-index: 4; }
+@media (min-width: 768px) { .sec5-divider-1 { grid-area: 2/10/3/17; z-index: 4; } }
+
+.sec5-item-2 { grid-area: 6/2/8/10; z-index: 3; }
+@media (min-width: 768px) { .sec5-item-2 { grid-area: 3/10/5/18; z-index: 3; } }
+.sec5-divider-2 { grid-area: 7/2/8/10; z-index: 5; }
+@media (min-width: 768px) { .sec5-divider-2 { grid-area: 4/10/5/17; z-index: 5; } }
+
+.sec5-item-3 { grid-area: 8/2/10/10; z-index: 2; }
+@media (min-width: 768px) { .sec5-item-3 { grid-area: 5/10/7/18; z-index: 2; } }
+.sec5-divider-3 { grid-area: 9/2/10/10; z-index: 6; }
+@media (min-width: 768px) { .sec5-divider-3 { grid-area: 6/10/7/17; z-index: 6; } }
+
+.sec5-item-4 { grid-area: 10/2/12/10; z-index: 5; }
+@media (min-width: 768px) { .sec5-item-4 { grid-area: 7/10/9/18; z-index: 5; } }
+.sec5-divider-4 { grid-area: 11/2/12/10; z-index: 7; }
+@media (min-width: 768px) { .sec5-divider-4 { grid-area: 8/10/9/17; z-index: 7; } }
+
+.sec5-item-5 { grid-area: 12/2/14/10; z-index: 6; }
+@media (min-width: 768px) { .sec5-item-5 { grid-area: 9/10/11/18; z-index: 6; } }
+.sec5-divider-5 { grid-area: 13/2/14/10; z-index: 8; }
+@media (min-width: 768px) { .sec5-divider-5 { grid-area: 10/10/11/17; z-index: 8; } }
+
+.sec5-item-6 { grid-area: 14/2/16/10; z-index: 7; }
+@media (min-width: 768px) { .sec5-item-6 { grid-area: 11/10/13/18; z-index: 7; } }
+
+/* Col 2 Items & Dividers */
+.sec5-divider-6 { grid-area: 15/2/16/10; z-index: 5; }
+@media (min-width: 768px) { .sec5-divider-6 { grid-area: 2/18/3/25; z-index: 5; } }
+.sec5-item-7 { grid-area: 16/2/18/10; z-index: 3; }
+@media (min-width: 768px) { .sec5-item-7 { grid-area: 1/18/3/26; z-index: 3; } }
+
+.sec5-divider-7 { grid-area: 17/2/18/10; z-index: 6; }
+@media (min-width: 768px) { .sec5-divider-7 { grid-area: 4/18/5/25; z-index: 6; } }
+.sec5-item-8 { grid-area: 18/2/20/10; z-index: 4; }
+@media (min-width: 768px) { .sec5-item-8 { grid-area: 3/18/5/26; z-index: 4; } }
+
+.sec5-divider-8 { grid-area: 19/2/20/10; z-index: 7; }
+@media (min-width: 768px) { .sec5-divider-8 { grid-area: 6/18/7/25; z-index: 7; } }
+.sec5-item-9 { grid-area: 20/2/22/10; z-index: 5; }
+@media (min-width: 768px) { .sec5-item-9 { grid-area: 5/18/7/26; z-index: 5; } }
+
+.sec5-divider-9 { grid-area: 21/2/22/10; z-index: 8; }
+@media (min-width: 768px) { .sec5-divider-9 { grid-area: 8/18/9/25; z-index: 8; } }
+.sec5-item-10 { grid-area: 22/2/24/10; z-index: 6; }
+@media (min-width: 768px) { .sec5-item-10 { grid-area: 7/18/9/26; z-index: 6; } }
+
+.sec5-divider-10 { grid-area: 23/2/24/10; z-index: 9; }
+@media (min-width: 768px) { .sec5-divider-10 { grid-area: 10/18/11/25; z-index: 9; } }
+.sec5-item-11 { grid-area: 24/2/26/10; z-index: 7; }
+@media (min-width: 768px) { .sec5-item-11 { grid-area: 9/18/11/26; z-index: 7; } }
+
+.sec5-item-12 { grid-area: 26/2/28/10; z-index: 8; }
+@media (min-width: 768px) { .sec5-item-12 { grid-area: 11/18/13/26; z-index: 8; } }
+
+/* ==============================================================
+   Section 6: How We Work
+   ============================================================== */
+.fluid-grid-sec6 {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 20px);
+  --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (20px * (8 - 1))) / 8);
+
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(41, minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11px;
+  column-gap: 20px;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .fluid-grid-sec6 {
+    --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 20px);
+    --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (20px * (24 - 1))) / 24);
+    --inset-padding: 0vw;
+    --row-height-scaling-factor: 0.0215;
+    --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding)));
+
+    grid-template-rows: repeat(24, minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+    grid-template-columns:
+      minmax(var(--grid-gutter), 1fr)
+      repeat(24, minmax(0, var(--cell-max-width)))
+      minmax(var(--grid-gutter), 1fr);
+    row-gap: 11px;
+    column-gap: 20px;
+  }
+}
+
+.sec6-eyebrow-block {
+  grid-area: 3/2/5/10;
+  z-index: 5;
+}
+@media (min-width: 768px) {
+  .sec6-eyebrow-block {
+    grid-area: 4/3/6/15;
+    z-index: 5;
+  }
+}
+
+.sec6-headline-block {
+  grid-area: 5/2/8/9;
+  z-index: 2;
+}
+@media (min-width: 768px) {
+  .sec6-headline-block {
+    grid-area: 8/3/10/20;
+    z-index: 2;
+  }
+}
+
+.sec6-media-block {
+  grid-area: 9/2/17/10;
+  z-index: 6;
+}
+@media (min-width: 768px) {
+  .sec6-media-block {
+    grid-area: 4/21/22/27;
+    z-index: 6;
+  }
+}
+
+.sec6-col1-text {
+  grid-area: 18/2/28/10;
+  z-index: 4;
+}
+@media (min-width: 768px) {
+  .sec6-col1-text {
+    grid-area: 11/3/20/11;
+    z-index: 4;
+  }
+}
+
+.sec6-col2-text {
+  grid-area: 28/2/38/10;
+  z-index: 3;
+}
+@media (min-width: 768px) {
+  .sec6-col2-text {
+    grid-area: 11/11/20/19;
+    z-index: 3;
+  }
+}
+
+.sec6-cta-block {
+  grid-area: 38/2/40/10;
+  z-index: 7;
+}
+@media (min-width: 768px) {
+  .sec6-cta-block {
+    grid-area: 21/3/23/19;
+    z-index: 7;
+  }
+}
+
+/* ==============================================================
+   Section 7: Honoring Where You've Been
+   ============================================================== */
+.fluid-grid-sec7 {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 11px);
+  --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (8 - 1))) / 8);
+
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(13, minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11px;
+  column-gap: 11px;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .fluid-grid-sec7 {
+    --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 11px);
+    --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (24 - 1))) / 24);
+    --inset-padding: 0vw;
+    --row-height-scaling-factor: 0.0215;
+    --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding)));
+
+    grid-template-rows: repeat(14, minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+    grid-template-columns:
+      minmax(var(--grid-gutter), 1fr)
+      repeat(24, minmax(0, var(--cell-max-width)))
+      minmax(var(--grid-gutter), 1fr);
+    row-gap: 11px;
+    column-gap: 11px;
+  }
+}
+
+.sec7-media-block {
+  grid-area: 1/2/10/11;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .sec7-media-block {
+    grid-area: 1/1/15/15;
+    z-index: 1;
+  }
+}
+
+.sec7-headline-block {
+  grid-area: 10/2/14/10;
+  z-index: 2;
+}
+@media (min-width: 768px) {
+  .sec7-headline-block {
+    grid-area: 9/16/15/26;
+    z-index: 2;
+  }
+}
+
+/* ==============================================================
+   Section 8: Specialties Include
+   ============================================================== */
+.fluid-grid-sec8 {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 11px);
+  --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (8 - 1))) / 8);
+
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(44, minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11px;
+  column-gap: 11px;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .fluid-grid-sec8 {
+    --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 11px);
+    --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (24 - 1))) / 24);
+    --inset-padding: 0vw;
+    --row-height-scaling-factor: 0.0215;
+    --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding)));
+
+    grid-template-rows: repeat(25, minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+    grid-template-columns:
+      minmax(var(--grid-gutter), 1fr)
+      repeat(24, minmax(0, var(--cell-max-width)))
+      minmax(var(--grid-gutter), 1fr);
+  }
+}
+
+.sec8-title-block {
+  grid-area: 3/2/5/10;
+  z-index: 6;
+}
+@media (min-width: 768px) {
+  .sec8-title-block {
+    grid-area: 3/3/7/10;
+    z-index: 9;
+  }
+}
+
+.sec8-specialty1-text {
+  grid-area: 6/2/13/10;
+  z-index: 2;
+}
+@media (min-width: 768px) {
+  .sec8-specialty1-text {
+    grid-area: 4/11/11/18;
+    z-index: 2;
+  }
+}
+
+.sec8-specialty1-btn {
+  grid-area: 13/2/15/10;
+  z-index: 3;
+}
+@media (min-width: 768px) {
+  .sec8-specialty1-btn {
+    grid-area: 11/11/13/18;
+    z-index: 6;
+  }
+}
+
+.sec8-specialty2-text {
+  grid-area: 16/2/23/10;
+  z-index: 3;
+}
+@media (min-width: 768px) {
+  .sec8-specialty2-text {
+    grid-area: 15/11/22/18;
+    z-index: 3;
+  }
+}
+
+.sec8-specialty2-btn {
+  grid-area: 23/2/25/10;
+  z-index: 4;
+}
+@media (min-width: 768px) {
+  .sec8-specialty2-btn {
+    grid-area: 22/11/24/18;
+    z-index: 7;
+  }
+}
+
+.sec8-specialty3-text {
+  grid-area: 26/2/33/10;
+  z-index: 4;
+}
+@media (min-width: 768px) {
+  .sec8-specialty3-text {
+    grid-area: 4/19/11/26;
+    z-index: 4;
+  }
+}
+
+.sec8-specialty3-btn {
+  grid-area: 33/2/35/10;
+  z-index: 5;
+}
+@media (min-width: 768px) {
+  .sec8-specialty3-btn {
+    grid-area: 11/19/13/26;
+    z-index: 8;
+  }
+}
+
+.sec8-specialty4-text {
+  grid-area: 36/2/42/10;
+  z-index: 3;
+}
+@media (min-width: 768px) {
+  .sec8-specialty4-text {
+    grid-area: 15/19/22/26;
+    z-index: 3;
+  }
+}
+
+.sec8-specialty4-btn {
+  grid-area: 42/2/44/10;
+  z-index: 4;
+}
+@media (min-width: 768px) {
+  .sec8-specialty4-btn {
+    grid-area: 22/19/24/26;
+    z-index: 7;
+  }
+}
+
+/* ==============================================================
+   Section 9: Schedule an Appointment
+   ============================================================== */
+.fluid-grid-sec9 {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 11px);
+  --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (8 - 1))) / 8);
+
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(31, minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11px;
+  column-gap: 11px;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .fluid-grid-sec9 {
+    --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 11px);
+    --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (24 - 1))) / 24);
+    --inset-padding: 0vw;
+    --row-height-scaling-factor: 0.0215;
+    --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding)));
+
+    grid-template-rows: repeat(16, minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+    grid-template-columns:
+      minmax(var(--grid-gutter), 1fr)
+      repeat(24, minmax(0, var(--cell-max-width)))
+      minmax(var(--grid-gutter), 1fr);
+  }
+}
+
+.sec9-media-left {
+  grid-area: 1/1/7/6;
+  z-index: 5;
+}
+@media (min-width: 768px) {
+  .sec9-media-left {
+    grid-area: 4/1/16/4;
+    z-index: 5;
+  }
+}
+
+.sec9-eyebrow-block {
+  grid-area: 8/2/10/10;
+  z-index: 0;
+}
+@media (min-width: 768px) {
+  .sec9-eyebrow-block {
+    grid-area: 1/6/3/16;
+    z-index: 0;
+  }
+}
+
+.sec9-headline-block {
+  grid-area: 10/2/13/10;
+  z-index: 3;
+}
+@media (min-width: 768px) {
+  .sec9-headline-block {
+    grid-area: 4/6/8/16;
+    z-index: 3;
+  }
+}
+
+.sec9-text-block {
+  grid-area: 13/2/21/10;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .sec9-text-block {
+    grid-area: 8/6/14/16;
+    z-index: 1;
+  }
+}
+
+.sec9-btn-block {
+  grid-area: 21/2/23/10;
+  z-index: 2;
+}
+@media (min-width: 768px) {
+  .sec9-btn-block {
+    grid-area: 14/6/16/16;
+    z-index: 2;
+  }
+}
+
+.sec9-media-right {
+  grid-area: 24/3/32/11;
+  z-index: 4;
+}
+@media (min-width: 768px) {
+  .sec9-media-right {
+    grid-area: 1/18/16/27;
+    z-index: 4;
+  }
+}
+
+/* ==============================================================
+   Footer: Main & Sub-footer Bar Grid
+   ============================================================== */
+.fluid-grid-footer {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 11px);
+  --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (8 - 1))) / 8);
+
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(29, minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11px;
+  column-gap: 11px;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .fluid-grid-footer {
+    --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 11px);
+    --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (24 - 1))) / 24);
+    --inset-padding: 0vw;
+    --row-height-scaling-factor: 0.0215;
+    --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding)));
+
+    grid-template-rows: repeat(9, minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+    grid-template-columns:
+      minmax(var(--grid-gutter), 1fr)
+      repeat(24, minmax(0, var(--cell-max-width)))
+      minmax(var(--grid-gutter), 1fr);
+    row-gap: 11px;
+    column-gap: 11px;
+  }
+}
+
+.footer-logo-block {
+  grid-area: 2/2/5/10;
+  z-index: 6;
+}
+@media (min-width: 768px) {
+  .footer-logo-block {
+    grid-area: 1/2/5/9;
+    z-index: 6;
+  }
+}
+
+.footer-tagline-block {
+  grid-area: 5/2/10/10;
+  z-index: 5;
+}
+@media (min-width: 768px) {
+  .footer-tagline-block {
+    grid-area: 4/2/9/10;
+    z-index: 5;
+  }
+}
+
+.footer-nav-block {
+  grid-area: 10/3/15/9;
+  z-index: 2;
+}
+@media (min-width: 768px) {
+  .footer-nav-block {
+    grid-area: 1/12/6/16;
+    z-index: 2;
+  }
+}
+
+.footer-hours-block {
+  grid-area: 23/3/30/9;
+  z-index: 3;
+}
+@media (min-width: 768px) {
+  .footer-hours-block {
+    grid-area: 1/16/8/21;
+    z-index: 3;
+  }
+}
+
+.footer-contact-block {
+  grid-area: 15/3/23/9;
+  z-index: 3;
+}
+@media (min-width: 768px) {
+  .footer-contact-block {
+    grid-area: 1/21/10/26;
+    z-index: 3;
+  }
+}
+
+/* Sub-footer bottom bar */
+.fluid-grid-subfooter {
+  --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 11px);
+  --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (8 - 1))) / 8);
+
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(2, minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11px;
+  column-gap: 11px;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .fluid-grid-subfooter {
+    --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 11px);
+    --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (11px * (24 - 1))) / 24);
+    --inset-padding: 0vw;
+    --row-height-scaling-factor: 0.0215;
+    --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding)));
+
+    grid-template-rows: repeat(1, minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+    grid-template-columns:
+      minmax(var(--grid-gutter), 1fr)
+      repeat(24, minmax(0, var(--cell-max-width)))
+      minmax(var(--grid-gutter), 1fr);
+    row-gap: 11px;
+    column-gap: 11px;
+  }
+}
+
+.subfooter-content-block {
+  grid-area: 1/2/3/10;
+  z-index: 0;
+}
+@media (min-width: 768px) {
+  .subfooter-content-block {
+    grid-area: 1/2/2/26;
+    z-index: 0;
+  }
+}
