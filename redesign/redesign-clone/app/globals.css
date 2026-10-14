@@ -1,0 +1,457 @@
+@import url("https://use.typekit.net/fsc1wsd.css");
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'WeddingdayPersonal';
+  src: url('/WeddingdayPersonalUseRegular-1Gvo0.ttf') format('truetype');
+  font-display: swap;
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'PrintedMoments';
+  src: url('https://static1.squarespace.com/static/670423e106da6c036366fd10/t/67042f1ac94bbb494649b8e4/1728327450432/printedmoments-webfont.woff') format('woff');
+  font-display: swap;
+  font-style: normal;
+  font-weight: normal;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+:root,
+body {
+  --sqs-site-gutter: 5vw;
+  --sqs-mobile-site-gutter: 6vw;
+  --sqs-site-max-width: 1500px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+a, button {
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@theme {
+  /* Centralized Semantic Theme Tokens */
+  --color-primary: #A8644B;          /* Terracotta (buttons, links, accents; WCAG AA 4.5:1 compliant) */
+  --color-primary-hover: #8E533E;    /* Darker terracotta for hover states */
+  --color-secondary: #FAF4EE;        /* Cream page background (Header, Hero, Sec2, Sec7, Office) */
+  --color-accent: #A8644B;           /* Script-font words, highlights, icons */
+  --color-ink: #2B2D2F;              /* Headings, footer background, primary dark charcoal */
+  --color-body: #2B2D2F;             /* Main paragraph text */
+  --color-muted: #6B625C;            /* Small/supporting text (darkened to 5.5:1 on cream) */
+  --color-line: #E8DFD8;             /* Borders, dividers, subtle separators */
+  --color-surface: #FFFFFF;          /* Cards, white sections */
+  --color-on-primary: #FFFFFF;       /* Text on primary buttons */
+  --color-scrim: #1C1A18;            /* Dark atmospheric scrim for quote banner */
+
+  /* Legacy brand token aliases mapped to centralized tokens */
+  --color-brand-bg: var(--color-surface);
+  --color-brand-hero-bg: var(--color-secondary);
+  --color-brand-surface: var(--color-secondary);
+  --color-brand-peach: var(--color-secondary);
+  --color-brand-accent: var(--color-accent);
+  --color-brand-teal: var(--color-primary);
+  --color-brand-heading: var(--color-ink);
+  --color-brand-body: var(--color-body);
+  --color-brand-sage: var(--color-muted);
+  --color-brand-mint: var(--color-line);
+  --color-brand-border: var(--color-line);
+  --color-brand-dark: var(--color-ink);
+
+  /* Fonts */
+  --font-serif: "beaufort-pro", var(--font-heading), "Georgia", serif;
+  --font-sans: var(--font-body), "Mulish", "Inter", sans-serif;
+  --font-script: var(--font-wedding-day), "WeddingdayPersonal", "PrintedMoments", cursive;
+  --font-cursive: var(--font-wedding-day), "WeddingdayPersonal", cursive;
+}
+
+@utility font-cursive {
+  font-family: var(--font-wedding-day), "WeddingdayPersonal", "PrintedMoments", cursive !important;
+}
+
+h1, h2, h3, h4 {
+  font-family: "beaufort-pro", var(--font-heading), serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.font-script,
+.font-cursive,
+.font-wedding {
+  font-family: var(--font-wedding-day), "WeddingdayPersonal", "PrintedMoments", cursive !important;
+}
+
+.font-heading {
+  font-family: "beaufort-pro", Georgia, serif !important;
+  font-weight: 300;
+}
+
+.font-body {
+  font-family: var(--font-body), "Mulish", sans-serif;
+}
+
+/* Editorial underline link with smooth line-drawing animation on hover (nearly 5s duration) */
+.btn-underline,
+.sqs-btn-underline {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 4px 0 6px 0;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Eliminate static resting baseline - only the animated line appears on hover */
+.btn-underline::after,
+.sqs-btn-underline::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Animated terracotta line that draws across on hover over ~4s */
+.btn-underline::before,
+.sqs-btn-underline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+.btn-underline:hover::before,
+.sqs-btn-underline:hover::before {
+  transform: scaleX(1);
+  transition: transform 4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* From Uiverse.io by e-coders (Adapted with sharp edges & design tokens) */
+.btn-sharp,
+.btn-uiverse,
+a.btn-sharp,
+button.btn-sharp {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent !important;
+  border: 2px solid #1A1A1A !important;
+  border-radius: 0px !important;
+  box-sizing: border-box;
+  color: #1A1A1A !important;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: normal;
+  margin: 0;
+  outline: none;
+  padding: 0.85em 2em;
+  text-align: center;
+  text-decoration: none !important;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1) !important;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  white-space: nowrap;
+}
+
+.btn-sharp:disabled,
+.btn-uiverse:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.btn-sharp:hover,
+.btn-uiverse:hover,
+a.btn-sharp:hover,
+button.btn-sharp:hover {
+  color: #FFFFFF !important;
+  background-color: #1A1A1A !important;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px !important;
+  transform: translateY(-2px) !important;
+}
+
+.btn-sharp:active,
+.btn-uiverse:active,
+a.btn-sharp:active,
+button.btn-sharp:active {
+  box-shadow: none !important;
+  transform: translateY(0) !important;
+}
+
+/* Terracotta Accent Variant (Optional) */
+.btn-sharp-terracotta {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent !important;
+  border: 2px solid var(--color-primary) !important;
+  border-radius: 0px !important;
+  box-sizing: border-box;
+  color: var(--color-primary) !important;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: normal;
+  margin: 0;
+  outline: none;
+  padding: 0.85em 2em;
+  text-align: center;
+  text-decoration: none !important;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1) !important;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  white-space: nowrap;
+}
+
+.btn-sharp-terracotta:hover {
+  color: var(--color-on-primary) !important;
+  background-color: var(--color-primary) !important;
+  box-shadow: rgba(168, 100, 75, 0.35) 0 8px 15px !important;
+  transform: translateY(-2px) !important;
+}
+
+.btn-sharp-terracotta:active {
+  box-shadow: none !important;
+  transform: translateY(0) !important;
+}
+
+/* Filled sharp button variant for primary intake CTA - Semantic Primary */
+.btn-sharp-filled,
+a.btn-sharp-filled,
+button.btn-sharp-filled {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--color-primary) !important;
+  border: 2px solid var(--color-primary) !important;
+  border-radius: 0px !important;
+  box-sizing: border-box;
+  color: var(--color-on-primary) !important;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: normal;
+  margin: 0;
+  outline: none;
+  padding: 0.85em 2em;
+  text-align: center;
+  text-decoration: none !important;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1) !important;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  white-space: nowrap;
+}
+
+.btn-sharp-filled:hover,
+a.btn-sharp-filled:hover,
+button.btn-sharp-filled:hover {
+  color: var(--color-on-primary) !important;
+  background-color: var(--color-primary-hover) !important;
+  border-color: var(--color-primary-hover) !important;
+  box-shadow: rgba(168, 100, 75, 0.35) 0 8px 15px !important;
+  transform: translateY(-2px) !important;
+}
+
+.btn-sharp-filled:active,
+a.btn-sharp-filled:active,
+button.btn-sharp-filled:active {
+  box-shadow: none !important;
+  transform: translateY(0) !important;
+}
+
+/* Aesthetic delicate pale peach image tone overlay (low fadedness, crisp photo clarity) */
+.media-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10 !important;
+  background: linear-gradient(
+    145deg,
+    rgba(247, 214, 200, 0.09) 0%,
+    rgba(235, 175, 150, 0.06) 100%
+  );
+  transition: opacity 0.4s ease;
+}
+
+.fluid-engine img,
+.media-wrapper img,
+.image-landing-reveal img,
+.hero-image-landing-1 img,
+.hero-image-landing-2 img {
+  filter: none;
+}
+
+/* ==========================================================================
+   SEO-Friendly Editorial Image Landing & Scroll Reveal Animation
+   Cinematic Serene Physics (6-second ultra-slow visual exhale)
+   ========================================================================== */
+/* ==========================================================================
+   SEO-Friendly Editorial Image Landing & Scroll Reveal Animation
+   Cinematic Serene Physics (6-second ultra-slow visual exhale)
+   Opposite reveals for dual-image sections (Left: Bottom-to-Top, Right: Top-to-Bottom)
+   ========================================================================== */
+@keyframes imageLandingRevealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(36px) scale(0.975);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes imageLandingRevealDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-36px) scale(0.975);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Backward compatibility alias */
+@keyframes imageLandingReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(36px) scale(0.975);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Dedicated Above-The-Fold Hero Landing Animations (Harmonious Opposite Directions) */
+/* Left image (Dr. Maya Reynolds): reveals from bottom to top */
+.hero-image-landing-1 {
+  animation: imageLandingRevealUp 6s cubic-bezier(0.2, 0.9, 0.3, 1) 0.1s both;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+/* Right image (Office suite): reveals from top to bottom */
+.hero-image-landing-2 {
+  animation: imageLandingRevealDown 6s cubic-bezier(0.2, 0.9, 0.3, 1) 0.35s both;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+/* Scroll reveal for downstream section images */
+/* Left / Primary image: reveals from bottom to top */
+.image-landing-reveal,
+.image-landing-reveal.reveal-up,
+.image-scroll-reveal {
+  opacity: 0;
+  transform: translateY(36px) scale(0.975);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+.image-landing-reveal.is-revealed,
+.image-landing-reveal.reveal-up.is-revealed,
+.image-scroll-reveal.is-revealed {
+  animation: imageLandingRevealUp 6s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+
+/* Right / Secondary image (Opposite direction): reveals from top to bottom */
+.image-landing-reveal.reveal-down {
+  opacity: 0;
+  transform: translateY(-36px) scale(0.975);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+.image-landing-reveal.reveal-down.is-revealed {
+  animation: imageLandingRevealDown 6s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-landing-1,
+  .hero-image-landing-2,
+  .image-landing-reveal,
+  .image-scroll-reveal,
+  .animate-signature {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+/* Animated handwritten signature stroke */
+@keyframes drawSignature {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-signature {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawSignature 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+}
